@@ -1,0 +1,43 @@
+var _wende$elmchemy_core$Elmchemy$tryCatch = function (a) {
+	return _elm_lang$core$Native_Utils.crash(
+		'Elmchemy',
+		{
+			start: {line: 86, column: 5},
+			end: {line: 86, column: 16}
+		})('You can\'t use \'try\' in a browser');
+};
+var _wende$elmchemy_core$Elmchemy$flambda = F2(
+	function (arity, f) {
+		return _elm_lang$core$Native_Utils.crash(
+			'Elmchemy',
+			{
+				start: {line: 76, column: 5},
+				end: {line: 76, column: 16}
+			})('You can\'t use foreign lambda in a browser');
+	});
+var _wende$elmchemy_core$Elmchemy$tryFfi = F2(
+	function (m, f) {
+		return _elm_lang$core$Native_Utils.crash(
+			'Elmchemy',
+			{
+				start: {line: 64, column: 5},
+				end: {line: 64, column: 16}
+			})('You can\'t use tryFfi in a browser');
+	});
+var _wende$elmchemy_core$Elmchemy$ffi = F2(
+	function (m, f) {
+		return _elm_lang$core$Native_Utils.crash(
+			'Elmchemy',
+			{
+				start: {line: 49, column: 5},
+				end: {line: 49, column: 16}
+			})('You can\'t use ffi in a browser');
+	});
+var _wende$elmchemy_core$Elmchemy$lffi = function (a) {
+	return _elm_lang$core$Native_Utils.crash(
+		'Elmchemy',
+		{
+			start: {line: 26, column: 5},
+			end: {line: 26, column: 16}
+		})('You can\'t call local ffi in a browser');
+};

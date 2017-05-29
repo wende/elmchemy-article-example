@@ -1,0 +1,107 @@
+var _wende$elmchemy_core$Elmchemy_XBasics$tuple5 = F5(
+	function (a, b, c, d, e) {
+		return {ctor: '_Tuple5', _0: a, _1: b, _2: c, _3: d, _4: e};
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$tuple4 = F4(
+	function (a, b, c, d) {
+		return {ctor: '_Tuple4', _0: a, _1: b, _2: c, _3: d};
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$tuple3 = F3(
+	function (a, b, c) {
+		return {ctor: '_Tuple3', _0: a, _1: b, _2: c};
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$tuple2 = F2(
+	function (a, b) {
+		return {ctor: '_Tuple2', _0: a, _1: b};
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$throw_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Kernel', 'throw');
+var _wende$elmchemy_core$Elmchemy_XBasics$notImplemented = function () {
+	var _p0 = _wende$elmchemy_core$Elmchemy_XBasics$throw_('Not implemented');
+	return _elm_lang$core$Native_Utils.crash(
+		'Elmchemy.XBasics',
+		{
+			start: {line: 372, column: 9},
+			end: {line: 372, column: 20}
+		})('a');
+}();
+var _wende$elmchemy_core$Elmchemy_XBasics$flip = F3(
+	function (f, a, b) {
+		return A2(f, b, a);
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$always = F2(
+	function (a, b) {
+		return a;
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$identity = function (a) {
+	return a;
+};
+var _wende$elmchemy_core$Elmchemy_XBasics$addLists_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Kernel', '++');
+var _wende$elmchemy_core$Elmchemy_XBasics$addStrings_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Kernel', '<>');
+var _wende$elmchemy_core$Elmchemy_XBasics$isBinary_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Kernel', 'is_binary');
+var _wende$elmchemy_core$Elmchemy_XBasics_ops = _wende$elmchemy_core$Elmchemy_XBasics_ops || {};
+_wende$elmchemy_core$Elmchemy_XBasics_ops['++'] = F2(
+	function (a, b) {
+		return (_wende$elmchemy_core$Elmchemy_XBasics$isBinary_(a) && _wende$elmchemy_core$Elmchemy_XBasics$isBinary_(b)) ? A2(_wende$elmchemy_core$Elmchemy_XBasics$addStrings_, a, b) : A2(_wende$elmchemy_core$Elmchemy_XBasics$addLists_, a, b);
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$inspect_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Kernel', 'inspect');
+var _wende$elmchemy_core$Elmchemy_XBasics$toString = function (a) {
+	return A2(
+		_wende$elmchemy_core$Elmchemy_XBasics$inspect_,
+		a,
+		{ctor: '[]'});
+};
+var _wende$elmchemy_core$Elmchemy_XBasics$mul_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Kernel', '*');
+var _wende$elmchemy_core$Elmchemy_XBasics$toFloat = function (x) {
+	return A2(_wende$elmchemy_core$Elmchemy_XBasics$mul_, x, 1.0);
+};
+var _wende$elmchemy_core$Elmchemy_XBasics$truncate = function (x) {
+	return _wende$elmchemy_core$Elmchemy_XBasics$notImplemented;
+};
+var _wende$elmchemy_core$Elmchemy_XBasics$ceiling = function (x) {
+	return _wende$elmchemy_core$Elmchemy_XBasics$notImplemented;
+};
+var _wende$elmchemy_core$Elmchemy_XBasics$floor = function (x) {
+	return _wende$elmchemy_core$Elmchemy_XBasics$notImplemented;
+};
+var _wende$elmchemy_core$Elmchemy_XBasics$round = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Kernel', 'round');
+var _wende$elmchemy_core$Elmchemy_XBasics$atan2 = A2(_wende$elmchemy_core$Elmchemy$ffi, ':math', 'atan2');
+var _wende$elmchemy_core$Elmchemy_XBasics$atan = A2(_wende$elmchemy_core$Elmchemy$ffi, ':math', 'atan');
+var _wende$elmchemy_core$Elmchemy_XBasics$asin = A2(_wende$elmchemy_core$Elmchemy$ffi, ':math', 'asin');
+var _wende$elmchemy_core$Elmchemy_XBasics$acos = A2(_wende$elmchemy_core$Elmchemy$ffi, ':math', 'acos');
+var _wende$elmchemy_core$Elmchemy_XBasics$tan = A2(_wende$elmchemy_core$Elmchemy$ffi, ':math', 'tan');
+var _wende$elmchemy_core$Elmchemy_XBasics$sin = A2(_wende$elmchemy_core$Elmchemy$ffi, ':math', 'sin');
+var _wende$elmchemy_core$Elmchemy_XBasics$cos = A2(_wende$elmchemy_core$Elmchemy$ffi, ':math', 'cos');
+var _wende$elmchemy_core$Elmchemy_XBasics$pi = A2(_wende$elmchemy_core$Elmchemy$ffi, ':math', 'pi');
+var _wende$elmchemy_core$Elmchemy_XBasics$e = 2.71828;
+var _wende$elmchemy_core$Elmchemy_XBasics$logBase = F2(
+	function (a, b) {
+		return _wende$elmchemy_core$Elmchemy_XBasics$notImplemented;
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$clamp = F3(
+	function (x, bottom, top) {
+		return A2(
+			_elm_lang$core$Basics$max,
+			top,
+			A2(_elm_lang$core$Basics$min, bottom, x));
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$sqrt = A2(_wende$elmchemy_core$Elmchemy$ffi, ':math', 'sqrt');
+var _wende$elmchemy_core$Elmchemy_XBasics$negate = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Kernel', '-');
+var _wende$elmchemy_core$Elmchemy_XBasics$xor = F2(
+	function (a, b) {
+		return (a && (!b)) || ((!a) && b);
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$GT = {ctor: 'GT'};
+var _wende$elmchemy_core$Elmchemy_XBasics$EQ = {ctor: 'EQ'};
+var _wende$elmchemy_core$Elmchemy_XBasics$LT = {ctor: 'LT'};
+var _wende$elmchemy_core$Elmchemy_XBasics$compare = F2(
+	function (a, b) {
+		return (_elm_lang$core$Native_Utils.cmp(a, b) > 0) ? _wende$elmchemy_core$Elmchemy_XBasics$GT : ((_elm_lang$core$Native_Utils.cmp(a, b) < 0) ? _wende$elmchemy_core$Elmchemy_XBasics$LT : _wende$elmchemy_core$Elmchemy_XBasics$EQ);
+	});
+var _wende$elmchemy_core$Elmchemy_XBasics$AsStrings = {ctor: 'AsStrings'};
+var _wende$elmchemy_core$Elmchemy_XBasics$AsBinaries = {ctor: 'AsBinaries'};
+var _wende$elmchemy_core$Elmchemy_XBasics$Binaries = function (a) {
+	return {ctor: 'Binaries', _0: a};
+};
+var _wende$elmchemy_core$Elmchemy_XBasics$Structs = function (a) {
+	return {ctor: 'Structs', _0: a};
+};

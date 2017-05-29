@@ -1,0 +1,274 @@
+var _wende$elmchemy_core$Elmchemy_XString$joinChars_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Enum', 'join');
+var _wende$elmchemy_core$Elmchemy_XString$fromList = function (list) {
+	return A2(_wende$elmchemy_core$Elmchemy_XString$joinChars_, list, '');
+};
+var _wende$elmchemy_core$Elmchemy_XString$map_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Enum', 'map');
+var _wende$elmchemy_core$Elmchemy_XString$toCharlist_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'to_charlist');
+var _wende$elmchemy_core$Elmchemy_XString$toList = function (str) {
+	var charlist = _wende$elmchemy_core$Elmchemy_XString$toCharlist_(str);
+	return A2(_wende$elmchemy_core$Elmchemy_XString$map_, charlist, _elm_lang$core$List$singleton);
+};
+var _wende$elmchemy_core$Elmchemy_XString$toFloat_ = A2(_wende$elmchemy_core$Elmchemy$tryFfi, 'String', 'to_float');
+var _wende$elmchemy_core$Elmchemy_XString$toInt_ = A2(_wende$elmchemy_core$Elmchemy$tryFfi, 'String', 'to_integer');
+var _wende$elmchemy_core$Elmchemy_XString$toInt = function (str) {
+	var _p0 = _wende$elmchemy_core$Elmchemy_XString$toInt_(str);
+	if ((_p0.ctor === 'Err') && (_p0._0 === 'argument error')) {
+		return _elm_lang$core$Result$Err(
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'could not convert string \'',
+				A2(_elm_lang$core$Basics_ops['++'], str, '\' to an Int')));
+	} else {
+		return _p0;
+	}
+};
+var _wende$elmchemy_core$Elmchemy_XString$matches_ = A2(_wende$elmchemy_core$Elmchemy$ffi, ':binary', 'matches');
+var _wende$elmchemy_core$Elmchemy_XString$indexes = F2(
+	function (pattern, str) {
+		return A2(
+			_elm_lang$core$List$map,
+			_wende$elmchemy_core$Elmchemy_XTuple$first,
+			A2(_wende$elmchemy_core$Elmchemy_XString$matches_, str, pattern));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$indices = F2(
+	function (pattern, str) {
+		return A2(_wende$elmchemy_core$Elmchemy_XString$indexes, pattern, str);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$endsWith_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'ends_with?');
+var _wende$elmchemy_core$Elmchemy_XString$endsWith = F2(
+	function (suffix, str) {
+		return A2(_wende$elmchemy_core$Elmchemy_XString$endsWith_, str, suffix);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$startsWith_ = F2(
+	function (prefix, str) {
+		return A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'starts_with?');
+	});
+var _wende$elmchemy_core$Elmchemy_XString$startsWith = F2(
+	function (prefix, str) {
+		return A2(_wende$elmchemy_core$Elmchemy_XString$startsWith_, str, prefix);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$contains_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', ' contains?');
+var _wende$elmchemy_core$Elmchemy_XString$contains = F2(
+	function (pattern, str) {
+		return A2(_wende$elmchemy_core$Elmchemy_XString$contains_, str, pattern);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$toFloat = function (str) {
+	var real = A2(_wende$elmchemy_core$Elmchemy_XString$contains, '.', str) ? str : A2(_elm_lang$core$Basics_ops['++'], str, '.0');
+	var _p1 = _wende$elmchemy_core$Elmchemy_XString$toFloat_(real);
+	if ((_p1.ctor === 'Err') && (_p1._0 === 'argument error')) {
+		return _elm_lang$core$Result$Err(
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'could not convert string \'',
+				A2(_elm_lang$core$Basics_ops['++'], str, '\' to a Float')));
+	} else {
+		return _p1;
+	}
+};
+var _wende$elmchemy_core$Elmchemy_XString$all = F2(
+	function (f, str) {
+		return A2(
+			_elm_lang$core$List$all,
+			f,
+			_wende$elmchemy_core$Elmchemy_XString$toList(str));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$any = F2(
+	function (f, str) {
+		return A2(
+			_elm_lang$core$List$any,
+			f,
+			_wende$elmchemy_core$Elmchemy_XString$toList(str));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$toLower = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'downcase');
+var _wende$elmchemy_core$Elmchemy_XString$toUpper = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'upcase');
+var _wende$elmchemy_core$Elmchemy_XString$words = function (s) {
+	return A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'split');
+};
+var _wende$elmchemy_core$Elmchemy_XString$trimRight = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'trim_trailing');
+var _wende$elmchemy_core$Elmchemy_XString$trimLeft = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'trim_leading');
+var _wende$elmchemy_core$Elmchemy_XString$trim = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'trim');
+var _wende$elmchemy_core$Elmchemy_XString$padTrailing = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'pad_trailing');
+var _wende$elmchemy_core$Elmchemy_XString$padLeading = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'pad_leading');
+var _wende$elmchemy_core$Elmchemy_XString$slice_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'slice');
+var _wende$elmchemy_core$Elmchemy_XString$repeat_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'duplicate');
+var _wende$elmchemy_core$Elmchemy_XString$repeat = F2(
+	function (n, str) {
+		return A2(_wende$elmchemy_core$Elmchemy_XString$repeat_, str, n);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$join_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Enum', 'join');
+var _wende$elmchemy_core$Elmchemy_XString$join = F2(
+	function (str, list) {
+		return A2(_wende$elmchemy_core$Elmchemy_XString$join_, list, str);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$split_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'split');
+var _wende$elmchemy_core$Elmchemy_XString$split = F2(
+	function (pattern, str) {
+		return A3(
+			_wende$elmchemy_core$Elmchemy_XString$split_,
+			str,
+			{
+				ctor: '::',
+				_0: pattern,
+				_1: {ctor: '[]'}
+			},
+			{ctor: '[]'});
+	});
+var _wende$elmchemy_core$Elmchemy_XString$lines = function (str) {
+	return A2(_wende$elmchemy_core$Elmchemy_XString$split, '\n', str);
+};
+var _wende$elmchemy_core$Elmchemy_XString$foldr = F3(
+	function (f, acc, str) {
+		return A3(
+			_wende$elmchemy_core$Elmchemy_XList$foldr,
+			f,
+			acc,
+			_wende$elmchemy_core$Elmchemy_XString$toList(str));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$foldl = F3(
+	function (f, acc, str) {
+		return A3(
+			_wende$elmchemy_core$Elmchemy_XList$foldl,
+			f,
+			acc,
+			_wende$elmchemy_core$Elmchemy_XString$toList(str));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$reverse = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'reverse');
+var _wende$elmchemy_core$Elmchemy_XString$length = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'length');
+var _wende$elmchemy_core$Elmchemy_XString$slice = F3(
+	function (from, to, str) {
+		var l = _wende$elmchemy_core$Elmchemy_XString$length(str);
+		var mirror = function (a) {
+			return (_elm_lang$core$Native_Utils.cmp(a, 0) < 0) ? (l + a) : a;
+		};
+		var start = mirror(from);
+		var len = mirror(to) - start;
+		return A3(_wende$elmchemy_core$Elmchemy_XString$slice_, str, start, len);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$left = F2(
+	function (n, str) {
+		return A3(_wende$elmchemy_core$Elmchemy_XString$slice, 0, n, str);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$dropRight = F2(
+	function (n, str) {
+		return A3(
+			_wende$elmchemy_core$Elmchemy_XString$slice,
+			0,
+			_elm_lang$core$Basics$negate(n),
+			str);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$right = F2(
+	function (n, str) {
+		return A3(
+			_wende$elmchemy_core$Elmchemy_XString$slice,
+			_elm_lang$core$Basics$negate(n),
+			_wende$elmchemy_core$Elmchemy_XString$length(str),
+			str);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$dropLeft = F2(
+	function (n, str) {
+		return A3(
+			_wende$elmchemy_core$Elmchemy_XString$slice,
+			n,
+			_wende$elmchemy_core$Elmchemy_XString$length(str),
+			str);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$concat = function (list) {
+	return A3(
+		_wende$elmchemy_core$Elmchemy_XList$foldr,
+		F2(
+			function (x, y) {
+				return A2(_elm_lang$core$Basics_ops['++'], x, y);
+			}),
+		'',
+		list);
+};
+var _wende$elmchemy_core$Elmchemy_XString$append = F2(
+	function (a, b) {
+		return A2(_elm_lang$core$Basics_ops['++'], a, b);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$splitAt_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'String', 'split_at');
+var _wende$elmchemy_core$Elmchemy_XString$uncons = function (str) {
+	var _p2 = A2(_wende$elmchemy_core$Elmchemy_XString$splitAt_, str, 1);
+	var first = _p2._0;
+	var rest = _p2._1;
+	var realFirst = _wende$elmchemy_core$Elmchemy_XString$toList(first);
+	var _p3 = realFirst;
+	if (_p3.ctor === '[]') {
+		return _elm_lang$core$Maybe$Nothing;
+	} else {
+		if (_p3._1.ctor === '[]') {
+			return _elm_lang$core$Maybe$Just(
+				{ctor: '_Tuple2', _0: _p3._0, _1: rest});
+		} else {
+			return _elm_lang$core$Maybe$Nothing;
+		}
+	}
+};
+var _wende$elmchemy_core$Elmchemy_XString$fromChar = A2(_wende$elmchemy_core$Elmchemy$ffi, ':binary', 'list_to_bin');
+var _wende$elmchemy_core$Elmchemy_XString$map = F2(
+	function (f, str) {
+		return A2(
+			_wende$elmchemy_core$Elmchemy_XString$join,
+			'',
+			A2(
+				_elm_lang$core$List$map,
+				_wende$elmchemy_core$Elmchemy_XString$fromChar,
+				function (str) {
+					return A2(_elm_lang$core$List$map, f, str);
+				}(
+					_wende$elmchemy_core$Elmchemy_XString$toList(str))));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$filter = F2(
+	function (f, str) {
+		return A2(
+			_wende$elmchemy_core$Elmchemy_XString$join,
+			'',
+			A2(
+				_elm_lang$core$List$map,
+				_wende$elmchemy_core$Elmchemy_XString$fromChar,
+				function (str) {
+					return A2(_elm_lang$core$List$filter, f, str);
+				}(
+					_wende$elmchemy_core$Elmchemy_XString$toList(str))));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$padLeft = F3(
+	function (n, c, str) {
+		return A3(
+			_wende$elmchemy_core$Elmchemy_XString$padLeading,
+			str,
+			n,
+			_wende$elmchemy_core$Elmchemy_XString$fromChar(c));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$padRight = F3(
+	function (n, c, str) {
+		return A3(
+			_wende$elmchemy_core$Elmchemy_XString$padTrailing,
+			str,
+			n,
+			_wende$elmchemy_core$Elmchemy_XString$fromChar(c));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$pad = F3(
+	function (n, c, str) {
+		var left = n;
+		var right = ((_wende$elmchemy_core$Elmchemy_XString$length(str) + n) / 2) | 0;
+		return A3(
+			_wende$elmchemy_core$Elmchemy_XString$padLeft,
+			left,
+			c,
+			A3(_wende$elmchemy_core$Elmchemy_XString$padRight, right, c, str));
+	});
+var _wende$elmchemy_core$Elmchemy_XString$cons = F2(
+	function (c, str) {
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			_wende$elmchemy_core$Elmchemy_XString$fromChar(c),
+			str);
+	});
+var _wende$elmchemy_core$Elmchemy_XString$isEmpty = function (str) {
+	return _elm_lang$core$Native_Utils.eq(
+		_wende$elmchemy_core$Elmchemy_XString$length(str),
+		0);
+};
+var _wende$elmchemy_core$Elmchemy_XString$Trim = function (a) {
+	return {ctor: 'Trim', _0: a};
+};

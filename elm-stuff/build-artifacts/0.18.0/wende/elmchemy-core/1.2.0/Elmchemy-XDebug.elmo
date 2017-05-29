@@ -1,0 +1,10 @@
+var _wende$elmchemy_core$Elmchemy_XDebug$crash = A2(_wende$elmchemy_core$Elmchemy$ffi, 'Kernel', 'raise');
+var _wende$elmchemy_core$Elmchemy_XDebug$puts_ = A2(_wende$elmchemy_core$Elmchemy$ffi, 'IO', 'inspect');
+var _wende$elmchemy_core$Elmchemy_XDebug$log = F2(
+	function (title, a) {
+		var _p0 = A2(
+			_wende$elmchemy_core$Elmchemy_XDebug$puts_,
+			'#{title}:#{a}',
+			{ctor: '[]'});
+		return a;
+	});
