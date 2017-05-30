@@ -1,1 +1,9 @@
+var _user$project$Hello$sum = function (list) {
+	var _p0 = list;
+	if (_p0.ctor === '::') {
+		return _p0._0 + _user$project$Hello$sum(_p0._1);
+	} else {
+		return 0;
+	}
+};
 var _user$project$Hello$hello = 'world!';
