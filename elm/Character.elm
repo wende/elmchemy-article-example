@@ -1,19 +1,12 @@
 module Character exposing (..)
 
-import Weapon exposing (Weapon)
-import Armor exposing (Armor)
 
-
--- Type tagging
-
-
-type Gender
-    = Male
-    | Female
-
-
-
--- Type aliasing
+type alias Character =
+    { name : String
+    , surname : String
+    , gender : Gender
+    , health : ( Int, Int )
+    }
 
 
 type alias Stats =
@@ -23,18 +16,18 @@ type alias Stats =
     }
 
 
-type alias Character =
-    { name : String
-    , surname : String
-    , gender : Gender
-    , health : ( Int, Int )
-    , arm : Maybe Weapon
-    , body : Maybe Armor
-    , stats : Stats
-    }
+
+-- Type tagging
+
+
+type Gender
+    = Male
+    | Female
+    | Other
 
 
 
+-- Type aliasing
 -- Type alias building
 
 
@@ -45,9 +38,6 @@ new name surname gender =
         surname
         gender
         ( 100, 100 )
-        Nothing
-        Nothing
-        (Stats 0 0 0)
 
 
 
@@ -74,43 +64,40 @@ type Stat
     | Vitality
 
 
-setStat : Stat -> Int -> Character -> Character
-setStat stat value character =
-    let
-        stats =
-            character.stats
 
-        getHp ( current, total ) =
-            current // total
-    in
-        case stat of
-            Strength ->
-                { character
-                    | stats = { stats | strength = value }
-                }
-
-            Intelligence ->
-                { character
-                    | stats = { stats | intelligence = value }
-                }
-
-            Vitality ->
-                { character
-                    | stats = { stats | vitality = value }
-                    , health =
-                        character.health
-                            <$ (+) ((value - character.stats.vitality) * 10)
-                            $> always (100 + 10 * value)
-                }
-
-
-
+-- setStat : Stat -> Int -> Character -> Character
+-- setStat stat value character =
+--     let
+--         stats =
+--             character.stats
+--
+--         getHp ( current, total ) =
+--             current // total
+--     in
+--         case stat of
+--             Strength ->
+--                 { character
+--                     | stats = { stats | strength = value }
+--                 }
+--
+--             Intelligence ->
+--                 { character
+--                     | stats = { stats | intelligence = value }
+--                 }
+--
+--             Vitality ->
+--                 { character
+--                     | stats = { stats | vitality = value }
+--                     , health =
+--                         character.health
+--                             <$ (+) ((value - character.stats.vitality) * 10)
+--                             $> always (100 + 10 * value)
+--                 }
 -- Result
-
-
-equip : Weapon -> Character -> Result String Character
-equip weapon character =
-    if weapon.level < character.stats.intelligence then
-        Ok { character | arm = Just weapon }
-    else
-        Err "Too dumb"
+--
+-- equip : Weapon -> Character -> Result String Character
+-- equip weapon character =
+--     if weapon.level < character.stats.intelligence then
+--         Ok { character | arm = Just weapon }
+--     else
+--         Err "Too dumb"
