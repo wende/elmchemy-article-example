@@ -18,7 +18,7 @@ defmodule CharacterTest do
       assert is_integer(gordon.stats[s]), "No #{s} stat in #{inspect gordon}"
     end
 
-    assert Character.set_stat(:vitality, 10, gordon).stats.vitality = 10
+    assert Character.set_stat(:vitality, 10, gordon).stats.vitality == 10
   end
 
   test "Boosting vitality boosts health" do
@@ -42,7 +42,4 @@ defmodule CharacterTest do
     assert {:ok, equipped_gordon} = Character.equip(weapon, smart_gordon)
     assert equipped_gordon.arm == {weapon}
   end
-
-
-
 end

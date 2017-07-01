@@ -1,11 +1,15 @@
 module Character exposing (..)
 
+import Weapon exposing (Weapon)
+
 
 type alias Character =
     { name : String
     , surname : String
     , gender : Gender
     , health : ( Int, Int )
+    , stats : Stats
+    , arm : Maybe Weapon
     }
 
 
@@ -38,6 +42,8 @@ new name surname gender =
         surname
         gender
         ( 100, 100 )
+        (Stats 0 0 0)
+        Nothing
 
 
 
@@ -64,40 +70,36 @@ type Stat
     | Vitality
 
 
+setStat : Stat -> Int -> Character -> Character
+setStat stat value character =
+    let
+        stats =
+            character.stats
+    in
+        case stat of
+            Strength ->
+                { character
+                    | stats = { stats | strength = value }
+                }
 
--- setStat : Stat -> Int -> Character -> Character
--- setStat stat value character =
---     let
---         stats =
---             character.stats
---
---         getHp ( current, total ) =
---             current // total
---     in
---         case stat of
---             Strength ->
---                 { character
---                     | stats = { stats | strength = value }
---                 }
---
---             Intelligence ->
---                 { character
---                     | stats = { stats | intelligence = value }
---                 }
---
---             Vitality ->
---                 { character
---                     | stats = { stats | vitality = value }
---                     , health =
---                         character.health
---                             <$ (+) ((value - character.stats.vitality) * 10)
---                             $> always (100 + 10 * value)
---                 }
--- Result
---
--- equip : Weapon -> Character -> Result String Character
--- equip weapon character =
---     if weapon.level < character.stats.intelligence then
---         Ok { character | arm = Just weapon }
---     else
---         Err "Too dumb"
+            Intelligence ->
+                { character
+                    | stats = { stats | intelligence = value }
+                }
+
+            Vitality ->
+                { character
+                    | stats = { stats | vitality = value }
+                    , health =
+                        character.health
+                            <$ (+) ((value - character.stats.vitality) * 10)
+                            $> always (100 + 10 * value)
+                }
+
+
+equip : Weapon -> Character -> Result String Character
+equip weapon character =
+    if weapon.level < character.stats.intelligence then
+        Ok { character | arm = Just weapon }
+    else
+        Err "Too dumb"
